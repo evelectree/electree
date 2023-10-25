@@ -4,6 +4,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "./assets/logo.svg";
 import Cover from "./assets/cover.jpg";
 import CityImage from "./assets/city.jpg";
+import AppstoreImage from "./assets/app-store.png";
+import PlaystoreImage from "./assets/playstore.png";
+import ContactImage from "./assets/contact.jpg";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -24,7 +27,7 @@ function App() {
         >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">Electree</span>
               <img className="h-20 w-auto" src={logo} alt="" />
             </a>
           </div>
@@ -118,7 +121,6 @@ function App() {
             className="absolute inset-0 object-cover w-full h-full lg:h-screen"
             alt=""
           />
-
           <div className="relative bg-gray-900 bg-opacity-75 lg:h-screen">
             <div className="relative isolate px-6 pt-14 lg:px-8">
               <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
@@ -132,52 +134,24 @@ function App() {
                       Charging Stations
                     </span>
                   </h1>
-                  <h3 className="mt-20 mb-2 text-3xl text-white dark:text-white">
+                  <h3 className="mt-20 mb-4 text-3xl text-white dark:text-white">
                     Coming soon on
                   </h3>
-                  <div className="justify-center items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                    <a href="#" className="">
-                      <svg
-                        className="mr-3 w-7 h-7"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fab"
-                        data-icon="apple"
-                        role="img"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path
-                          fill="#fff"
-                          d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
-                        ></path>
-                      </svg>
-                      {/* <div className="text-left">
-					<div className="mb-1 text-xs">Download on the</div>
-					<div className="-mt-1 font-sans text-sm font-semibold">Mac App Store</div>
-				</div> */}
-                    </a>
-                    <a href="#" className="">
-                      <svg
-                        className="mr-3 w-6 h-6"
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fab"
-                        data-icon="google-play"
-                        role="img"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path
-                          fill="#fff"
-                          d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"
-                        ></path>
-                      </svg>
-                      {/* <div className="text-left">
-					<div className="mb-1 text-xs">Get in on</div>
-					<div className="-mt-1 font-sans text-sm font-semibold">Google Play</div>
-				</div> */}
-                    </a>
+                  <div className="flex justify-center items-center">
+                    <div className="flex items-center">
+                      <img
+                        src={AppstoreImage}
+                        alt="App Store"
+                        className="w-12 mr-4"
+                      />
+                      <div className="h-10 w-1 bg-white"></div>{" "}
+                      {/* White divider */}
+                      <img
+                        src={PlaystoreImage}
+                        alt="Play Store"
+                        className="w-12 ml-4"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,8 +187,8 @@ function App() {
         </div>
       </section>
       <section className="">
-        <div className="py-20 bg-gray-50 h-screen">
-          <div className="container mx-auto px-6 md:px-12 xl:px-32">
+        <div className="py-20 bg-gray-50">
+          <div className="container mx-auto px-6 md:px-12 xl:px-32 h-screen">
             <div className="mb-32 text-center">
               <h2 className="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">
                 Meet our Team
@@ -267,6 +241,96 @@ function App() {
           </div>
         </div>
       </section>
+      <section
+        className="min-h-screen bg-[url('./assets/contact.jpg')] bg-cover bg-center"
+      >
+        <div className="flex flex-col min-h-screen bg-black/60">
+          <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
+            <div className="flex-1 lg:flex lg:items-center lg:-mx-6">
+              <div className="text-white lg:w-1/2 lg:mx-6">
+                <h1 className="text-2xl font-semibold capitalize lg:text-3xl">
+                  Get in touch
+                </h1>
+
+                <p className="max-w-xl mt-6">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Voluptatem quo aliquid molestiae hic incidunt beatae placeat
+                  accusantium! Alias ex quisquam ab tempora. Ratione autem
+                  doloremque ducimus numquam doloribus, error sed.
+                </p>
+              </div>
+
+              <div className="mt-8 lg:w-1/2 lg:mx-6">
+                <div className="w-full px-8 py-10 mx-auto overflow-hidden bg-white shadow-2xl rounded-xl dark:bg-gray-900 lg:max-w-xl">
+                  <h1 className="text-xl font-medium text-gray-700 dark:text-gray-200">
+                    Contact form
+                  </h1>
+
+                  <p className="mt-2 text-gray-500 dark:text-gray-400">
+                    Ask us everything and we would love to hear from you
+                  </p>
+
+                  <form className="mt-6">
+                    <div className="flex-1">
+                      <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="John Doe"
+                        className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      />
+                    </div>
+
+                    <div className="flex-1 mt-6">
+                      <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                        Email address
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="johndoe@example.com"
+                        className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      />
+                    </div>
+
+                    <div className="w-full mt-6">
+                      <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                        Message
+                      </label>
+                      <textarea
+                        className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                        placeholder="Message"
+                      ></textarea>
+                    </div>
+
+                    <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+                      get in touch
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer className="bg-gray-900">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <div className="flex justify-center text-teal-600 sm:justify-start">
+              <div className="flex lg:flex-1">
+                <a href="#" className="-m-1.5 p-1.5">
+                  <span className="sr-only">Electree</span>
+                  <img className="h-20 w-auto" src={logo} alt="" />
+                </a>
+              </div>
+            </div>
+
+            <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
+              Copyright &copy; 2023. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
