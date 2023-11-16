@@ -7,6 +7,8 @@ import CityImage from "./assets/city.jpg";
 import AppstoreImage from "./assets/app-store.png";
 import PlaystoreImage from "./assets/playstore.png";
 import ContactImage from "./assets/contact.jpg";
+import AkshayImage from "./assets/akshay.jpg";
+import SuhailImage from "./assets/suhail.jpg";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -208,14 +210,14 @@ function App() {
               <div className="space-y-6 text-center">
                 <img
                   className="w-64 h-64 mx-auto object-cover rounded-xl md:w-48 md:h-64 lg:w-64 lg:h-80"
-                  src="https://tailus.io/sources/blocks/classic/preview/images/man.jpg"
+                  src={SuhailImage}
                   alt="man"
                   loading="lazy"
                   width="1000"
                   height="667"
                 />
                 <div>
-                  <h4 className="text-2xl">Sohail</h4>
+                  <h4 className="text-2xl">Suhail Gulati</h4>
                   <span className="block text-sm text-gray-500">
                     Chief Technical Officer
                   </span>
@@ -223,15 +225,15 @@ function App() {
               </div>
               <div className="space-y-6 text-center">
                 <img
-                  className="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                  src="https://tailus.io/sources/blocks/classic/preview/images/woman.jpg"
+                  className="w-64 h-64 mx-auto object-cover rounded-xl md:w-48 md:h-64 lg:w-64 lg:h-80"
+                  src={AkshayImage}
                   alt="woman"
                   loading="lazy"
                   width="1000"
                   height="667"
                 />
                 <div>
-                  <h4 className="text-2xl">Akshay</h4>
+                  <h4 className="text-2xl">Akshay Bhatnagar</h4>
                   <span className="block text-sm text-gray-500">
                     Chief Operations Officer
                   </span>
@@ -289,11 +291,10 @@ function App() {
               </div>
               <div className="ml-4">
                 <p className="text-xl font-semibold text-white">
-                  Are you compatible with all EVs?
+                Do you provide access all public charging stations? 
                 </p>
                 <p className="mt-4 text-base text-gray-400">
-                  Yes, our services are compatible with all types of electric
-                  vehicles, including Teslas, Nissan Leafs, and more.
+                Yes, we provide access to all public charging stations who have partnered with us.
                 </p>
               </div>
             </div>
@@ -428,7 +429,8 @@ function App() {
             </div>
 
             <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
-              Copyright &copy; 2023. All rights reserved.
+              Copyright &copy; 2023. Electree EV Solutions Pvt Ltd. All rights reserved.
+
             </p>
           </div>
         </div>
