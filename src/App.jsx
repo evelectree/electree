@@ -48,7 +48,7 @@ function App() {
     try {
       const response = await axios.post(
         `https://api.airtable.com/v0/${
-          import.meta.env.VITE_APP_AIRTABLE_BASE_ID
+          process.env.VITE_APP_AIRTABLE_BASE_ID
         }/Contacts`,
         {
           fields: {
@@ -61,7 +61,7 @@ function App() {
         {
           headers: {
             Authorization: `Bearer ${
-              import.meta.env.VITE_APP_AIRTABLE_API_KEY
+              process.env.VITE_APP_AIRTABLE_API_KEY
             }`,
             "Content-Type": "application/json",
           },
