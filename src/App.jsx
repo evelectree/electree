@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "./assets/logo.svg";
@@ -9,16 +9,86 @@ import PlaystoreImage from "./assets/playstore.png";
 import ContactImage from "./assets/contact.jpg";
 import AkshayImage from "./assets/akshay.jpg";
 import SuhailImage from "./assets/suhail.jpg";
+import axios from "axios";
 
 const navigation = [
   { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "About Us", href: "#" },
-  { name: "Partner With us", href: "#" },
+  { name: "Team", href: "#team" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Partner With us", href: "#partner" },
 ];
 
 function App() {
+  const section1Ref = useRef(null);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // function to submit form data to airtable using airtable api and fetch
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // const formData = new FormData(event.target);
+    // const fullName = formData.get('fullName');
+    // const phone = formData.get('phone');
+    // const email = formData.get('email');
+    // const message = formData.get('message');
+
+    try {
+      const response = await axios.post(
+        `https://api.airtable.com/v0/${
+          import.meta.env.VITE_APP_AIRTABLE_BASE_ID
+        }/Contacts`,
+        {
+          fields: {
+            Name: formData.fullName,
+            Phone: formData.phone,
+            Email: formData.email,
+            Message: formData.message,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${
+              import.meta.env.VITE_APP_AIRTABLE_API_KEY
+            }`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setSubmitted(true);
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+      console.log("Data saved to Airtable:", response.data);
+      // Add your logic here for success message or redirect after form submission
+    } catch (error) {
+      console.error("Error saving data to Airtable:", error);
+      // Add your logic here for displaying an error message
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
     <div className="bg-white">
@@ -49,6 +119,11 @@ function App() {
                 key={item.name}
                 href={item.href}
                 className="text-sm font-semibold leading-6 text-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const section = document.querySelector(item.href);
+                  section.scrollIntoView({ behavior: "smooth" });
+                }}
               >
                 {item.name}
               </a>
@@ -188,7 +263,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="">
+      <section id="team" className="">
         <div className="py-20 bg-gray-50">
           <div className="container mx-auto px-6 md:px-12 xl:px-32 h-screen">
             <div className="mb-32 text-center">
@@ -243,7 +318,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="py-10 bg-gray-900 sm:py-16 lg:py-24">
+      <section id="faq" className="py-10 bg-gray-900 sm:py-16 lg:py-24">
         <div className="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
@@ -291,10 +366,11 @@ function App() {
               </div>
               <div className="ml-4">
                 <p className="text-xl font-semibold text-white">
-                Do you provide access all public charging stations? 
+                  Do you provide access all public charging stations?
                 </p>
                 <p className="mt-4 text-base text-gray-400">
-                Yes, we provide access to all public charging stations who have partnered with us.
+                  Yes, we provide access to all public charging stations who
+                  have partnered with us.
                 </p>
               </div>
             </div>
@@ -320,8 +396,13 @@ function App() {
               <p className="text-gray-50">
                 Didn’t find the answer you are looking for?{" "}
                 <a
-                  href="#"
+                  href="#partner"
                   title=""
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const section = document.querySelector("#partner");
+                    section.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="text-yellow-300 transition-all duration-200 hover:text-yellow-400 focus:text-yellow-400 hover:underline"
                 >
                   Contact our support
@@ -331,7 +412,10 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="min-h-screen bg-[url('./assets/contact.jpg')] bg-cover bg-center">
+      <section
+        id="partner"
+        className="min-h-screen bg-[url('./assets/contact.jpg')] bg-cover bg-center"
+      >
         <div className="flex flex-col min-h-screen bg-black/60">
           <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
             <div className="flex-1 lg:flex lg:items-center lg:-mx-6">
@@ -361,14 +445,17 @@ function App() {
                     Ask us everything and we would love to hear from you
                   </p>
 
-                  <form className="mt-6">
+                  <form className="mt-6" onSubmit={handleSubmit}>
                     <div className="flex-1">
                       <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                         Full Name
                       </label>
                       <input
                         type="text"
+                        name="fullName"
                         placeholder="John Doe"
+                        value={formData.fullName}
+                        onChange={handleChange}
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -379,7 +466,10 @@ function App() {
                       </label>
                       <input
                         type="Phone"
+                        name="phone"
                         placeholder="9191919191"
+                        value={formData.phone}
+                        onChange={handleChange}
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -390,7 +480,10 @@ function App() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         placeholder="johndoe@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       />
                     </div>
@@ -402,6 +495,9 @@ function App() {
                       <textarea
                         className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                         placeholder="Message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
                       ></textarea>
                     </div>
 
@@ -409,6 +505,12 @@ function App() {
                       get in touch
                     </button>
                   </form>
+                  {submitted && (
+                    <p>
+                      Data submitted! Someone from our team will contact you
+                      soon.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -429,8 +531,8 @@ function App() {
             </div>
 
             <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
-              Copyright &copy; 2023. Electree EV Solutions Pvt Ltd. All rights reserved.
-
+              Copyright &copy; 2023. Electree EV Solutions Pvt Ltd. All rights
+              reserved.
             </p>
           </div>
         </div>
