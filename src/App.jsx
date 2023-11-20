@@ -103,7 +103,7 @@ function App() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -145,11 +145,11 @@ function App() {
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">Electree</span>
                 <img
                   className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
+                  src={logo}
+                  alt="logo"
                 />
               </a>
               <button
@@ -163,24 +163,16 @@ function App() {
             </div>
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
+                <div className="space-y-2 py-6" onClick={() => setMobileMenuOpen(false)}>
                   {navigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                     >
                       {item.name}
                     </a>
                   ))}
-                </div>
-                <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
                 </div>
               </div>
             </div>
@@ -247,7 +239,7 @@ function App() {
             <div className="lg:py-24">
               <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                 Access our Network of
-                <span className="sm:block"> 1200+EV Charging Stations </span>
+                <span className="sm:block"> 1000+ EV Charging Stations </span>
               </h1>
 
               <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
@@ -312,7 +304,7 @@ function App() {
 
       <section id="team" className="">
         <div className="py-20 bg-gray-50">
-          <div className="container mx-auto px-6 md:px-12 xl:px-32 h-screen">
+          <div className="container mx-auto px-6 md:px-12 xl:px-32">
             <div className="mb-32 text-center">
               <h2 className="mb-16 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
                 Meet our Founders
