@@ -40,15 +40,9 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // const formData = new FormData(event.target);
-    // const fullName = formData.get('fullName');
-    // const phone = formData.get('phone');
-    // const email = formData.get('email');
-    // const message = formData.get('message');
-
     try {
       const response = await axios.post(
-        `https://api.airtable.com/v0/${process.env.VITE_APP_AIRTABLE_BASE_ID}/Contacts`,
+        `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Contacts`,
         {
           fields: {
             Name: formData.fullName,
@@ -59,7 +53,7 @@ function App() {
         },
         {
           headers: {
-            Authorization: `Bearer ${process.env.VITE_APP_AIRTABLE_API_KEY}`,
+            Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
             "Content-Type": "application/json",
           },
         }
