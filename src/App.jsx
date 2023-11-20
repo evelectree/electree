@@ -42,7 +42,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Contacts`,
+        `https://api.airtable.com/v0/${import.meta.env.AIRTABLE_BASE_ID}/Contacts`,
         {
           fields: {
             Name: formData.fullName,
@@ -53,7 +53,7 @@ function App() {
         },
         {
           headers: {
-            Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+            Authorization: `Bearer ${import.meta.env.AIRTABLE_API_KEY}`,
             "Content-Type": "application/json",
           },
         }
