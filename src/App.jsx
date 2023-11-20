@@ -9,13 +9,14 @@ import PlaystoreImage from "./assets/playstore.png";
 import ContactImage from "./assets/contact.jpg";
 import AkshayImage from "./assets/akshay.jpg";
 import SuhailImage from "./assets/suhail.jpg";
+import ProductImage from "./assets/products.jpg";
 import axios from "axios";
 
 const navigation = [
-  { name: "Product", href: "#" },
+  { name: "Product", href: "#product" },
   { name: "Team", href: "#team" },
   { name: "FAQ", href: "#faq" },
-  { name: "Partner With us", href: "#partner" },
+  { name: "Partner With Us", href: "#partner" },
 ];
 
 function App() {
@@ -47,9 +48,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        `https://api.airtable.com/v0/${
-          process.env.VITE_APP_AIRTABLE_BASE_ID
-        }/Contacts`,
+        `https://api.airtable.com/v0/${process.env.VITE_APP_AIRTABLE_BASE_ID}/Contacts`,
         {
           fields: {
             Name: formData.fullName,
@@ -60,9 +59,7 @@ function App() {
         },
         {
           headers: {
-            Authorization: `Bearer ${
-              process.env.VITE_APP_AIRTABLE_API_KEY
-            }`,
+            Authorization: `Bearer ${process.env.VITE_APP_AIRTABLE_API_KEY}`,
             "Content-Type": "application/json",
           },
         }
@@ -236,7 +233,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="bg-gray-900 text-white">
+      <section className="bg-gray-900 text-white" id="product">
         <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
             <div className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:order-last lg:h-full">
@@ -249,7 +246,7 @@ function App() {
 
             <div className="lg:py-24">
               <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                Join our network of
+                Access our Network of
                 <span className="sm:block"> 1200+EV Charging Stations </span>
               </h1>
 
@@ -263,12 +260,62 @@ function App() {
           </div>
         </div>
       </section>
+
+      <section class="pb-32 pt-32 text-center lg:text-left bg-[#a7c957]">
+        <div class="container mx-auto text-center lg:text-left xl:px-32">
+          <div class="grid items-center lg:grid-cols-2">
+            <div class="mb-12 lg:mb-0">
+              <div class="relative z-[1] block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-[hsla(0,0%,5%,0.55)] dark:shadow-black/20 md:px-12 lg:-mr-14 backdrop-blur-[30px]">
+                <h2 class="mb-6 text-4xl font-bold">Micro Finance</h2>
+                <p class="mb-12 text-neutral-500 dark:text-neutral-300">
+                  We're dedicated to helping you switch to an EV by providing
+                  simple, affordable financing options. With us on your side,
+                  you'll be cruising the streets in style and saving the planet
+                  at the same time!
+                </p>
+
+                {/* <div class="grid gap-x-6 md:grid-cols-3">
+                  <div class="mb-12 md:mb-0">
+                    <h2 class="text-dark mb-4 text-3xl font-bold">10%</h2>
+                    <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
+                      Less sugar
+                    </h5>
+                  </div>
+
+                  <div class="mb-12 md:mb-0">
+                    <h2 class="text-dark mb-4 text-3xl font-bold">70%</h2>
+                    <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
+                      More flavor
+                    </h5>
+                  </div>
+
+                  <div class="">
+                    <h2 class="text-dark mb-4 text-3xl font-bold">0%</h2>
+                    <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
+                      Gluten
+                    </h5>
+                  </div>
+                </div> */}
+              </div>
+            </div>
+
+            <div>
+              <img
+                src={ProductImage}
+                class="fancy-border-radius rotate-lg-6 w-full shadow-lg dark:shadow-black/20"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="team" className="">
         <div className="py-20 bg-gray-50">
           <div className="container mx-auto px-6 md:px-12 xl:px-32 h-screen">
             <div className="mb-32 text-center">
               <h2 className="mb-16 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-                Meet our Team
+                Meet our Founders
               </h2>
               <p className="text-gray-600 lg:w-8/12 lg:mx-auto">
                 Meet our passionate founders, graduates of Delhi School of
@@ -293,9 +340,7 @@ function App() {
                 />
                 <div>
                   <h4 className="text-2xl">Suhail Gulati</h4>
-                  <span className="block text-sm text-gray-500">
-                    Chief Technical Officer
-                  </span>
+                  <span className="block text-sm text-gray-500">Founder</span>
                 </div>
               </div>
               <div className="space-y-6 text-center">
@@ -310,7 +355,7 @@ function App() {
                 <div>
                   <h4 className="text-2xl">Akshay Bhatnagar</h4>
                   <span className="block text-sm text-gray-500">
-                    Chief Operations Officer
+                    Co - Founder
                   </span>
                 </div>
               </div>
@@ -401,7 +446,7 @@ function App() {
                   onClick={(e) => {
                     e.preventDefault();
                     const section = document.querySelector("#partner");
-                    section.scrollIntoView({ behavior: 'smooth' });
+                    section.scrollIntoView({ behavior: "smooth" });
                   }}
                   className="text-yellow-300 transition-all duration-200 hover:text-yellow-400 focus:text-yellow-400 hover:underline"
                 >
