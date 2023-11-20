@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "./assets/logo.svg";
+import logo from "./assets/logo.png";
 import Cover from "./assets/cover.jpg";
 import CityImage from "./assets/city.jpg";
 import AppstoreImage from "./assets/app-store.png";
